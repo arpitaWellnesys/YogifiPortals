@@ -1,0 +1,122 @@
+<div class="main">
+    <div class="d-flex flex-wrap auth-wrapper">
+      <div class="col-xl-12 d-lg-flex p-0" >
+        <div class="dashboard-div">
+          <div class="mt-5">
+            <app-dashboard-sidebar *ngIf="dashdata.user_type == 'teacher'"></app-dashboard-sidebar>
+            <app-admin-sidebar *ngIf="dashdata.user_type == 'admin'"></app-admin-sidebar>
+            <div class="container-fluid mt-5">
+                <h2 class="mb-5">Basic Details</h2>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <h4>First Name - {{(details.first_name)? details.first_name : 'N\A'}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4>Last Name - {{(details.last_name)? details.last_name : 'N\A'}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4>Email - {{details.email}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4>Mobile number - {{(details.mobile_no) ? details.mobile_no : 'N\A'}}</h4>
+                    </div>
+                </div>
+                <hr>
+                <h2 class="mb-5">Other Profile Details</h2>
+                <div class="row" *ngIf="details.teacherdetails.length == 0">
+                    <div class="col-md-12 mb-3"><h4>No Record Found</h4></div>
+                </div>
+                <div class="row" *ngIf="details.teacherdetails.length > 0">
+                    <div class="col-md-6 mb-3">
+                        <h4>Age - {{details.teacherdetails[0].age}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4>Accreditation - {{details.teacherdetails[0].accreditation}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4>Education Qualification - {{details.teacherdetails[0].education_qualification}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4>Familarity - {{details.teacherdetails[0].familarity}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4>Specialization - {{details.teacherdetails[0].specialization}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4>Primary Location - {{details.teacherdetails[0].primary_location}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4>Teaching Hours - {{details.teacherdetails[0].teaching_hours}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4>Facebook Handle - {{details.teacherdetails[0].facebook_handle}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4>Instagram handle - {{details.teacherdetails[0].instagram_handle}}</h4>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h4 *ngIf="details.teacherdetails[0].gender == 'f'">gender - Female</h4>
+                        <h4 *ngIf="details.teacherdetails[0].gender == 'm'">gender - Male</h4>
+                        <h4 *ngIf="details.teacherdetails[0].gender == 'o'">gender - Other</h4>
+                    </div>
+                    <div class="col-md-6 mb-3" *ngIf="details.teacherdetails[0].profile_pic">
+                        <h4 class="mb-3">Profile picture</h4>
+                        <p *ngIf="!details.teacherdetails[0].profile_pic.includes('data:image/')">Supported Document Not Found, Only Images can be visible here</p>
+                        <img src="{{details.teacherdetails[0].profile_pic}}" *ngIf="details.teacherdetails[0].profile_pic.includes('data:image/')" width="250">
+                    </div>
+                    <div class="col-md-6 mb-3" *ngIf="details.teacherdetails[0].yoga_video">
+                        <h4 class="mb-3">Yoga Video</h4>
+                        <p *ngIf="!details.teacherdetails[0].yoga_video.includes('data:video/mp4')">Supported Document Not Found, Only Videos can be visible</p>
+                        <video width="320" controls  *ngIf="details.teacherdetails[0].yoga_video.includes('data:video/mp4')">
+                            <source src="{{details.teacherdetails[0].yoga_video}}" type="video/mp4">
+                        </video>                          
+                        <!-- <img src="{{details.teacherdetails[0].yoga_video}}" *ngIf="details.teacherdetails[0].yoga_video.includes('data:image/')"> -->
+                    </div>
+                    <div class="col-md-6 mb-3" *ngIf="details.teacherdetails[0].certificate_file">
+                        <h4 class="mb-3">Certificate File</h4>
+                        <p *ngIf="!details.teacherdetails[0].certificate_file.includes('data:image/')">Supported Document Not Found, Only Images can be visible here</p>
+                        <img src="{{details.teacherdetails[0].certificate_file}}" *ngIf="details.teacherdetails[0].certificate_file.includes('data:image/')" width="250" style="    background: wheat;">
+                    </div>
+                </div>
+                <hr>
+                <h2 class="mb-5">Uploaded Content</h2>
+                <div class="row" *ngIf="details.uploads.length == 0">
+                    <div class="col-md-12 mb-3"><h4>No Record Found</h4></div>
+                </div>
+                <div class="row" *ngIf="details.uploads.length > 0" >
+                    <div class="col-md-12" *ngFor="let uploads of details.uploads">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Url - {{uploads.url}}</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>File - </h4>
+                                <img src="{{uploads.file}}" width="100">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div *ngIf="details.acc_verify == 0.0">
+                        <a href="javascript:void(0);" class="btn btn-info mr-2" (click)="verifyTeacher(details._id,1)">Approve</a> 
+                        <a href="javascript:void(0);" class="btn btn-danger" (click)="verifyTeacher(details._id,2)">Decline</a> 
+                    </div>
+                    <div *ngIf="details.acc_verify == 1">
+                        <div class="row">
+                            <div class="col-md-12 mb-3"><h4 class="text-success">Approved</h4></div>
+                        </div>
+                    </div>
+                    <div *ngIf="details.acc_verify == 2">
+                        <div class="row">
+                            <div class="col-md-12 mb-3"><h4 class="text-danger">Declined</h4></div>
+                            <a href="javascript:void(0);" class="btn btn-info mr-2 mb-3" (click)="verifyTeacher(details._id,1)">Approve</a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>

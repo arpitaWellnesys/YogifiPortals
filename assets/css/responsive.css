@@ -1,0 +1,26 @@
+
+@media screen and ( max-width: 1400px){
+  .logo { margin-bottom: 30px;}
+  .form-title{ margin-bottom: 30px;}
+  .form-actions {margin-bottom: 20px; margin-top: 15px;}
+  .title-sign-up{ margin-bottom: 25px;}
+  .logo-right { padding: 30px;}
+  .logo-right img { max-width: 180px;}
+}
+
+@media screen and ( max-width: 1199px){
+.card-white {padding: 30px;}
+}
+
+@media screen and ( max-width: 991px){
+.card-white {border-top-right-radius: 0; max-width: 100%;}
+.logo-right { display: none;}
+}
+
+@media screen and ( max-width: 767px){
+  .card-white { padding: 15px 15px 30px 15px;} 
+  .form-title{ font-size: 22px;}
+  .social-clients li a{ font-size: 14px;}
+  .social-clients li img {margin-right: 13px; width: 20px;}
+  .auth-info { min-height: inherit;}
+}

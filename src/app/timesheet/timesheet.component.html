@@ -1,0 +1,103 @@
+<!-- <div class="d-flex" id="wrapper">
+    <app-sidebar></app-sidebar>
+    <div id="page-content-wrapper">
+      <app-topbar></app-topbar>
+       -->
+<div class="main">
+  <div class="d-flex flex-wrap auth-wrapper">
+    <div class="col-xl-12 d-lg-flex p-0" >
+      <div class="dashboard-div">
+        <div class="mt-5">
+          <app-dashboard-sidebar *ngIf="this.data.user_type == 'teacher'"></app-dashboard-sidebar>
+          <app-admin-sidebar *ngIf="this.data.user_type == 'admin'"></app-admin-sidebar>
+          <div class="container-fluid mt-5">
+            <div class="card">
+            <div class="card-header">
+              <h3 class="text-center"> {{MonthName}} - {{year}} </h3>
+            </div>
+            <div class="card-body">
+              <button type="button" class="float-right btn btn-primary mb-3 btn-sm" data-toggle="modal" data-target="#myModal">Add Timesheet</button>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <td>#</td>
+                    <td>Check In</td>
+                    <td>Check Out</td>
+                    <td>Description</td>
+                  </tr>
+                  <tr *ngFor="let item of [].constructor(daysInMonth); let i = index">
+                    <td >
+                      {{i+1}}
+                    </td>
+                    <td >
+                      <p *ngFor="let dates of timesheetData"><span *ngIf="dates.getdate == (i+1)">{{dates.checkin}}</span></p>
+                    </td>
+                    <td >
+                      <p *ngFor="let dates of timesheetData"><span *ngIf="dates.getdate == (i+1)">{{dates.checkout}}</span></p>
+                    </td>
+                    <td >
+                      <p *ngFor="let dates of timesheetData"><span *ngIf="dates.getdate == (i+1)">{{dates.description}}</span></p>
+                    </td>
+                    
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="timesheetForm"  (ngSubmit)="onSubmit()">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Timesheet</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+        
+            <div class="form-group">
+              <label>Date</label>
+              <input type="date" name="date" class="form-control" formControlName="date" value="{{date}}" readonly/>
+            </div>
+            <div class="form-group">
+              <label>Check In</label>
+              <input type="time" name="check-in" class="form-control" formControlName="checkin"/>
+              <div *ngIf="login.checkin.touched && login.checkin.invalid">
+                  <small class="text-danger" *ngIf="login.checkin.errors?.required">
+                      Check-In time is required!
+                  </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Check Out</label>
+              <input type="time" name="check-out" class="form-control" formControlName="checkout"/>
+              <div *ngIf="login.checkout.touched && login.checkout.invalid">
+                  <small class="text-danger" *ngIf="login.checkout.errors?.required">
+                      Check-out time is required
+                  </small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <!-- <input type="time" name="check-out" class="form-control"/> -->
+              <textarea class="form-control" name="description" rows="4" formControlName="description"></textarea>
+            </div>
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary">Add</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+

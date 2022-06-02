@@ -1,0 +1,187 @@
+<div class="row">
+    <div class="col-md-3 col-sm-3">  
+        <div class="logo-top mt-3">
+          <a href="#"><img src="/assets/images/logo-yogifi.png" alt="" width="150"></a>
+        </div>
+    </div>
+    <div class="col-md-9 col-sm-9 right-opt mt-3">
+      <a href="#"><img src="/assets/images/setting.png"></a>
+      <a href="javascript:void(0);"  [popover]="uploadTemplate"  #uploadpop="bs-popover" >
+        <img src="/assets/images/upload-icon.png">
+      </a>
+      <a href="javascript:void(0);" [popover]="chatTemplate" #chatpop="bs-popover">
+        <img src="/assets/images/message-circle.png">
+      </a>
+      <a href="javascript:void(0);" [routerLink]="['/edit-profile']"  *ngIf="this.data.users.user_type == 'teacher'"><img src="/assets/images/user_profile.png"></a>
+        <a class="dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="/assets/images/menu-bar.png" width="30px">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right mt-3" aria-labelledby="navbarDropdown">
+          <p class="dropdown-item" style="cursor: pointer;" [routerLink]="['/calendar']" >Calendar</p>    
+          <p class="dropdown-item" style="cursor: pointer;" [routerLink]="['/timesheet']" >Timesheet</p>    
+          <p class="dropdown-item" style="cursor: pointer;" [routerLink]="['/mat-data']" >Mat Data</p>
+          <p class="dropdown-item" style="cursor: pointer;" [routerLink]="['/session-duration']" >Session Duration</p>   
+          <p class="dropdown-item" style="cursor: pointer;" [routerLink]="['/best-session']" >Best Session</p>     
+          <p class="dropdown-item" style="cursor: pointer;" [routerLink]="['/change-password']" >Password</p>
+          <p class="dropdown-item" style="cursor: pointer;" (click)="logout();">Logout</p>
+        </div>
+    </div>
+</div>
+<ng-template #uploadTemplate >
+  <h3  class="popover-title popover-header" style="margin: -.5rem -.75rem 0 -.75rem;">Upload Content <span (click)="uploadpop.hide();" style="float: right;margin-left: 20px;cursor: pointer;"  class="close" aria-label="Close" ><img src="/assets/images/cross.png"></span></h3>
+  <form [formGroup]="uploadContent"  (ngSubmit)="onSubmit()"> 
+    <div class="container-fluid">
+      <div class="float-left mt-3" style="width: 100%;">
+        <div class="form-group">
+          <div class="floating-label-content">
+            <input class="floating-input float-msg form-control" type="text" placeholder=" "  style="height:50px;">
+            <input type="file" id="imgupload" accept="image/*" style="display:none" formControlName="filedata"  
+            (change)="handleUpload($event , 'file')"/> 
+            <label class="floating-label" style="top:13px;" >Add File or Folder</label>
+            <img src="/assets/images/plus-square.png" class="input-img" width="20" (click)="upload('imgupload')"/>
+          </div>
+          <div *ngIf="login.filedata.touched && login.filedata.invalid">
+            <small class="text-danger" *ngIf="login.filedata.errors?.required">
+                File is required
+            </small>
+          </div>
+          <p class="text-center mt-3"><b>Or</b></p>
+          <div class="floating-label-content">
+            <input class="floating-input float-msg form-control" type="text" placeholder=" " style="height:50px;" formControlName="url">
+            <label class="floating-label" style="top:13px;">Add Url Link </label>
+            <img src="/assets/images/link.png" class="input-img" width="20"/>
+          </div>
+          <div *ngIf="login.url.touched && login.url.invalid">
+            <small class="text-danger" *ngIf="login.url.errors?.required">
+                url is required!
+            </small>
+          </div>
+        </div>
+        <button style="width: 100%;" class="btn float-msg btn-default btn-active mb-4" type="submit" data-id="program">Upload</button>
+      </div>
+    </div>
+  </form>
+</ng-template>
+<ng-template #chatTemplate>
+    <h3  class="popover-title popover-header" style="margin: -.5rem -.75rem 0 -.75rem;">Chat <span (click)="chatpop.hide();" style="float: right;margin-left: 20px;cursor: pointer;" class="close" aria-label="Close"><img src="/assets/images/cross.png"></span></h3>
+    <div id='gfg' class="mt-3">
+      <tabset>
+          <tab>
+            <ng-template tabHeading>
+              <img src="/assets/images/user-1.png"> Emma
+            </ng-template>
+            <div class="container-fluid">
+              <div class="float-left receiver mt-3">
+                <div class="receiver-img">
+                  <img src="/assets/images/user-1.png" width="50">
+                </div>
+                <div class="receiver-message ml-3">
+                  <p><b>Emma Jackson</b></p>
+                  <p class="msg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <p class="text-right mr-3 mt-1">2:35 PM</p>
+                </div>
+              </div>
+              <div class="float-right sender mt-3">
+                <div class="sender-message mr-3">
+                  <p class="text-right"><b>Nicola Tesla</b></p>
+                  <p class="msg">Lorem ipsum dolor sit amet</p>
+                  <p class="text-right mr-3">3:35 PM</p>
+                </div>
+                <div class="receiver-img">
+                  <img src="/assets/images/receiver-1.png" width="30">
+                </div>
+              </div>
+              <div class="float-left receiver mt-3">
+                <div class="receiver-img">
+                  <img src="/assets/images/user-1.png" width="50">
+                </div>
+                <div class="receiver-message ml-3">
+                  <p><b>Emma Jackson</b></p>
+                  <p class="msg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <p class="text-right mr-3 mt-1">2:35 PM</p>
+                </div>
+              </div>
+              <div class="float-left mt-3" style="width: 100%;">
+                <div class="form-group">
+                  <div class="floating-label-content">
+                    <input class="floating-input float-msg form-control" type="text" placeholder=" ">
+                    <label class="floating-label">Enter Messages </label>
+                    <img src="/assets/images/send.png" class="input-img" width="25"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </tab>
+          <tab>
+            <ng-template tabHeading>
+              <img src="/assets/images/user-2.png"> Duke
+            </ng-template>
+            <div class="container-fluid">
+              <div class="float-left receiver mt-3">
+                <div class="receiver-img">
+                  <img src="/assets/images/user-2.png" width="50">
+                </div>
+                <div class="receiver-message ml-3">
+                  <p><b>Duke</b></p>
+                  <p class="msg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+              </div>
+              <div class="float-right sender mt-3">
+                <div class="sender-message mr-3">
+                  <p class="text-right"><b>Nicola Tesla</b></p>
+                  <p class="msg">Lorem ipsum dolor sit amet</p>
+                  <p class="text-right mr-3">3:35 PM</p>
+                </div>
+                <div class="receiver-img">
+                  <img src="/assets/images/receiver-1.png" width="30">
+                </div>
+              </div>
+              <div class="float-left mt-3" style="width: 100%;">
+                <div class="form-group">
+                  <div class="floating-label-content">
+                    <input class="floating-input float-msg form-control" type="text" placeholder=" ">
+                    <label class="floating-label">Enter Messages </label>
+                    <img src="/assets/images/send.png" class="input-img" width="25"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </tab>
+          <tab>
+            <ng-template tabHeading>
+              <img src="/assets/images/user-3.png"> Hella
+            </ng-template>
+            <div class="container-fluid">
+              <div class="float-left receiver mt-3">
+                <div class="receiver-img">
+                  <img src="/assets/images/user-3.png" width="50">
+                </div>
+                <div class="receiver-message ml-3">
+                  <p><b>Hella</b></p>
+                  <p class="msg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+              </div>
+              <div class="float-right sender mt-3">
+                <div class="sender-message mr-3">
+                  <p class="text-right"><b>Nicola Tesla</b></p>
+                  <p class="msg">Lorem ipsum dolor sit amet</p>
+                  <p class="text-right mr-3">3:35 PM</p>
+                </div>
+                <div class="receiver-img">
+                  <img src="/assets/images/receiver-1.png" width="30">
+                </div>
+              </div>
+              <div class="float-left mt-3" style="width: 100%;">
+                <div class="form-group">
+                  <div class="floating-label-content">
+                    <input class="floating-input float-msg form-control" type="text" placeholder=" ">
+                    <label class="floating-label">Enter Messages </label>
+                    <img src="/assets/images/send.png" class="input-img" width="25"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </tab>
+      </tabset>
+  </div>
+</ng-template>

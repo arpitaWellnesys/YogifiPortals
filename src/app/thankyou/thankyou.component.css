@@ -1,0 +1,26 @@
+.card {
+    margin: 15% auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+    color: white;
+    background: black;
+    padding: 5%;
+}
+
+.carousel-option{
+    padding: 40px;
+    max-width: 60%;
+    margin: 0 auto;
+}
+.carousel-item{
+    min-height: 400px;
+}
+.slick-disabled {
+    display: none;
+}
+.previous, .next {
+    margin: 0 20px;
+}
+/* .carousel-inner > .carousel-item:first-child ~ .carousel-control-prev{
+    display: none;
+} */

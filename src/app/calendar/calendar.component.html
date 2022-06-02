@@ -1,0 +1,25 @@
+<!-- <div class="d-flex" id="wrapper">
+    <app-sidebar></app-sidebar>
+    <div id="page-content-wrapper">
+      <app-topbar></app-topbar>
+      <div class="container-fluid">
+            <full-calendar [options]="calendarOptions"></full-calendar>
+      </div>
+    </div>
+</div> -->
+
+<div class="main">
+  <div class="d-flex flex-wrap auth-wrapper">
+     <div class="col-xl-12 d-lg-flex p-0" >
+        <div class="dashboard-div">
+          <div class="mt-5">
+            <app-dashboard-sidebar *ngIf="dashdata.user_type == 'teacher'"></app-dashboard-sidebar>
+            <app-admin-sidebar *ngIf="dashdata.user_type == 'admin'"></app-admin-sidebar>
+            <div class="container-fluid mt-5 mb-5">
+              <full-calendar [options]="calendarOptions"></full-calendar>
+            </div>
+          </div>
+        </div>
+     </div>
+  </div>
+</div>

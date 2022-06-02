@@ -1,0 +1,636 @@
+<div class="container-fluid">
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-md-7 card">
+                <div class="card-body">
+                    <form id="msform" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false"
+                        >
+                            <!-- <ol class="carousel-indicators">
+                              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                              <li data-target="#carouselExampleIndicators" data-slide-to="3" ></li>
+                              <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                              <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                              <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                              <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+                            </ol> -->
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="carousel-option">
+                                        <div class="form-group">
+                                            <label>First Name</label>
+                                            <input type="text" name="first_name" class="form-control" formControlName="first_name"/>
+                                            <div *ngIf="login.first_name.touched && login.first_name.invalid">
+                                                <small class="text-danger" *ngIf="login.first_name.errors?.required">
+                                                    First name is required!
+                                                </small>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Last Name</label>
+                                            <input type="text" name="last_name" class="form-control" formControlName="last_name" />
+                                            <div *ngIf="login.last_name.touched && login.last_name.invalid">
+                                                <small class="text-danger" *ngIf="login.last_name.errors?.required">
+                                                    Last name is required!
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Gender</label>
+                                            <!-- <input type="text" name="first_name" class="form-control"/> -->
+                                            <select class="form-control custom-select" name="gender" formControlName="gender">
+                                                <option>Select Gender</option>
+                                                <option value="m">Male</option>
+                                                <option value="f">Female</option>
+                                                <option value="o">Other</option>
+                                            </select>
+                                            <div *ngIf="login.gender.touched && login.gender.invalid">
+                                                <small class="text-danger" *ngIf="login.gender.errors?.required">
+                                                    Gender is required!
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Age</label>
+                                            <input type="number" name="age" class="form-control" formControlName="age"/>
+                                            <div *ngIf="login.age.touched && login.age.invalid">
+                                                <small class="text-danger" *ngIf="login.age.errors?.required">
+                                                    Age is required!
+                                                </small>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group text-center mt-3">
+                                            <!-- <a class="pre float-left btn bg-light mt-3" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                            << Previous
+                                        </a> -->
+                                            <!-- <a class="btn bg-light previous" href="#carouselExampleIndicators" data-slide="prev">
+                                                Previous
+                                            </a>  -->
+                                            <a class="btn bg-light next" href="#carouselExampleIndicators" data-slide="next">
+                                                Next >>
+                                            </a>
+                                            <!-- <button class="btn btn-info form-control mt-3">Next</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="carousel-option">
+                                        <div class="form-group">
+                                            <label>Phone Number</label>
+                                            <input type="text" name="phone_number" class="form-control" formControlName="phone_number" />
+                                            <div *ngIf="login.phone_number.touched && login.phone_number.invalid">
+                                                <small class="text-danger" *ngIf="login.phone_number.errors?.required">
+                                                    Phone Number is required!
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="email" name="email" class="form-control" formControlName="email" />
+                                            <div *ngIf="login.email.touched && login.email.invalid">
+                                                <small class="text-danger" *ngIf="login.email.errors?.required">
+                                                    Email is required!
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Educational Qualification</label>
+                                            <input type="text" name="educational_qualification" class="form-control" formControlName="education_qualification" />
+                                            <div *ngIf="login.education_qualification.touched && login.education_qualification.invalid">
+                                                <small class="text-danger" *ngIf="login.education_qualification.errors?.required">
+                                                    Educational Qualification is required!
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Specialization</label>
+                                            <input type="text" name="specialization" class="form-control" formControlName="specialization" />
+                                            <div *ngIf="login.specialization.touched && login.specialization.invalid">
+                                                <small class="text-danger" *ngIf="login.specialization.errors?.required">
+                                                    Specialization is required!
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group text-center mt-3">
+                                            <!-- <a class="pre float-left btn bg-light mt-3" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                            << Previous
+                                            </a> -->
+                                            <a class="btn bg-light previous" href="#carouselExampleIndicators" data-slide="prev">
+                                                Previous
+                                            </a> 
+                                            <a class="btn bg-light next" href="#carouselExampleIndicators" data-slide="next">
+                                                Next >>
+                                            </a>
+                                            <!-- <button class="btn btn-info form-control mt-3">Next</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="carousel-option">
+                                        <div class="form-group">
+                                            <label>Teaching Hours</label>
+                                            <input type="text" name="teaching_hours" class="form-control" formControlName="teaching_hours"/>
+                                            <div *ngIf="login.teaching_hours.touched && login.teaching_hours.invalid">
+                                                <small class="text-danger" *ngIf="login.teaching_hours.errors?.required">
+                                                    Teaching Hours is required!
+                                                </small>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Accreditation</label>
+                                            <input type="text" name="accreditation" class="form-control" formControlName="accreditation"/>
+                                            <div *ngIf="login.accreditation.touched && login.accreditation.invalid">
+                                                <small class="text-danger" *ngIf="login.accreditation.errors?.required">
+                                                    Accreditation is required!
+                                                </small>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Delivery Method</label>
+                                            <div class="row">
+                                                <div class="col-md-3 custom-control custom-radio custom-control-inline">
+                                                    <input type="radio"  class="custom-control-input" id="virtual" name="method" value="virtual" formControlName="method">
+                                                    <label for="virtual" class="custom-control-label"> Virtual </label>
+                                                </div>
+                                                <div class="col-md-3 custom-control custom-radio custom-control-inline">
+                                                    <input type="radio"  class="custom-control-input" id="personal" name="method" value="personal" formControlName="method" >
+                                                    <label for="personal" class="custom-control-label"> Personal </label>
+                                                </div>
+                                                <div class="col-md-3 custom-control custom-radio custom-control-inline">
+                                                    <input type="radio"  class="custom-control-input" id="studio" name="method" value="studio" formControlName="method">
+                                                    <label for="studio" class="custom-control-label"> Studio</label>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="login.method.touched && login.method.invalid">
+                                                <small class="text-danger" *ngIf="login.method.errors?.required">
+                                                    Method is required!
+                                                </small>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Familarity</label>
+                                            <div class="row">
+                                                <!-- <div class="col-md-3 custom-control custom-radio custom-control-inline" *ngFor="let familarity of familarities">
+                                                    <input type="radio"  class="custom-control-input" id="{{familarity.name}}" name="familarity"  formControlName="familarity" value="{{familarity._id}}">
+                                                    <label for="{{familarity.name}}" class="custom-control-label"> {{familarity.name}} </label>
+                                                </div> -->
+                                                <div class="col-md-3 custom-control custom-radio custom-control-inline">
+                                                    <input type="radio"  class="custom-control-input" id="Beginner" name="familarity" value="Beginner" formControlName="familarity">
+                                                    <label for="Beginner" class="custom-control-label"> Beginner </label>
+                                                </div>
+                                                <div class="col-md-3 custom-control custom-radio custom-control-inline">
+                                                    <input type="radio"  class="custom-control-input" id="Intermediate" name="familarity" value="Intermediate" formControlName="familarity">
+                                                    <label for="Intermediate" class="custom-control-label"> Intermediate </label>
+                                                </div>
+                                                <div class="col-md-3 custom-control custom-radio custom-control-inline">
+                                                    <input type="radio"  class="custom-control-input" id="Expert" name="familarity" value="Expert" formControlName="familarity">
+                                                    <label for="Expert" class="custom-control-label"> Expert</label>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="login.familarity.touched && login.familarity.invalid">
+                                                <small class="text-danger" *ngIf="login.familarity.errors?.required">
+                                                    Familarity is required!
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group text-center mt-3">
+                                            <!-- <a class="pre float-left btn bg-light mt-3" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                            << Previous
+                                            </a> -->
+                                            <a class="btn bg-light previous" href="#carouselExampleIndicators" data-slide="prev">
+                                                Previous
+                                            </a> 
+                                            <a class="btn bg-light next" href="#carouselExampleIndicators" data-slide="next">
+                                                Next >>
+                                            </a>
+                                            <!-- <button class="btn btn-info form-control mt-3">Next</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="carousel-option">
+                                        <div class="form-group" formArrayName="timing">
+                                            <label><b>Delivery Timings</b></label>
+                                            <div class="row mt-3">
+                                                <div class="col-md-2">
+                                                    Days
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            From:Hr
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            From:Min
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            To:Hr
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            To:Min
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                            <div class="row mt-3"  *ngFor="let cd of getControls();let i=index;" formGroupName={{i}}>
+                                                
+                                                <div class="col-md-2 custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" value="{{days[i]}}" id="{{days[i]}}"  formControlName="day">
+                                                    <label class="custom-control-label" for="{{days[i]}}">
+                                                        {{days[i]}}
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <select class="custom-select" name="start_hour[]" formControlName="start_hour">
+                                                                <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                        <select class="custom-select" name="start_min[]" formControlName="start_min">
+                                                                <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <select class="custom-select" name="end_hour[]" formControlName="end_hour">
+                                                                <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                        <select class="custom-select" name="end_min[]" formControlName="end_min">
+                                                                <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                            <!-- <div class="row mt-3">
+                                                <div class="col-md-2 custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="day[]" formControlName="day" value="Tuesday" id="Tuesday">
+                                                    <label class="custom-control-label" for="Tuesday">
+                                                        Tuesday
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <select class="custom-select" name="start_hour[]" formControlName="start_hour">
+                                                                <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                           <select class="custom-select" name="start_min[]" formControlName="start_min">
+                                                                <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <select class="custom-select" name="end_hour[]" formControlName="end_hour">
+                                                                <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                           <select class="custom-select" name="end_min[]" formControlName="end_min">
+                                                                <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-2 custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="day[]" formControlName="day" value="Wednesday" id="Wednesday">
+                                                    <label class="custom-control-label" for="Wednesday">
+                                                        Wednesday
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <select class="custom-select" name="start_hour[]" formControlName="start_hour">
+                                                                <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                           <select class="custom-select" name="start_min[]" formControlName="start_min">
+                                                                <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <select class="custom-select" name="end_hour[]" formControlName="end_hour">
+                                                                <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                           <select class="custom-select" name="end_min[]" formControlName="end_min">
+                                                                <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                            </select>(change)="onChange(cartoon.name, $event.target.checked)"
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="row mt-3">
+                                                <div class="col-md-2 custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="day[]" formControlName="day" value="Thursday" id="Thursday">
+                                                    <label class="custom-control-label" for="Thursday">
+                                                        Thursday
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <select class="custom-select" name="start_hour[]" formControlName="start_hour">
+                                                                <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                           <select class="custom-select" name="start_min[]" formControlName="start_min">
+                                                                <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <select class="custom-select" name="end_hour[]" formControlName="end_hour">
+                                                                <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                           <select class="custom-select" name="end_min[]" formControlName="end_min">
+                                                                <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="row mt-3">
+                                                <div class="col-md-2 custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="day[]" formControlName="day" value="Friday" id="Friday">
+                                                    <label class="custom-control-label" for="Friday">
+                                                        Friday
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <select class="custom-select" name="start_hour[]" formControlName="start_hour">
+                                                                <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                           <select class="custom-select" name="start_min[]" formControlName="start_min">
+                                                                <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <select class="custom-select" name="end_hour[]" formControlName="end_hour">
+                                                                <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                           <select class="custom-select" name="end_min[]" formControlName="end_min">
+                                                                <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-2 custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="day[]" formControlName="day" value="Saturday" id="Saturday">
+                                                    <label class="custom-control-label" for="Saturday">
+                                                        Saturday
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <select class="custom-select" name="start_hour[]" formControlName="start_hour">
+                                                                <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                           <select class="custom-select" name="start_min[]" formControlName="start_min">
+                                                                <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <select class="custom-select" name="end_hour[]" formControlName="end_hour">
+                                                                <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                           <select class="custom-select" name="end_min[]" formControlName="end_min">
+                                                                <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-2 custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" name="day[]" formControlName="day" value="Sunday" id="Sunday">
+                                                    <label class="custom-control-label" for="Sunday">
+                                                        Sunday
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <select class="custom-select" name="start_hour[]" formControlName="start_hour">
+                                                                <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                           <select class="custom-select" name="start_min[]" formControlName="start_min">
+                                                                <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <select class="custom-select" name="end_hour[]" formControlName="end_hour">
+                                                                <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                           <select class="custom-select" name="end_min[]" formControlName="end_min">
+                                                                <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                        <div class="form-group text-center mt-3">
+                                            <a class="btn bg-light previous" href="#carouselExampleIndicators" data-slide="prev">
+                                                Previous
+                                            </a> 
+                                            <a class="btn bg-light next" href="#carouselExampleIndicators" data-slide="next">
+                                                Next >>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item">
+                                    <div class="carousel-option">
+                                        <div class="form-group">
+                                            <label>Social Media Handle</label>
+                                            <div class="row">
+                                                <div class="form-group col-md-5 custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" value="instagram" id="instagram" formArrayName="social_media" (change)="onSocialChange($event);">
+                                                    <label class="custom-control-label" for="instagram">
+                                                        Instagram Handle
+                                                    </label>
+                                                </div>
+                                                <div class="form-group col-md-5 custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" value="facebook"  id="facebook" formArrayName="social_media" (change)="onSocialChange($event);">
+                                                    <label class="custom-control-label" for="facebook">
+                                                       Facebook Handle
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <label>Yoga Style</label>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-4 custom-control custom-checkbox" *ngFor="let style of yogestyle">
+                                                    <input class="custom-control-input" type="checkbox" value="{{style}}" id="{{style}}" formArrayName="yoga_style" (change)="onStyleChange($event);">
+                                                    <label class="custom-control-label" for="{{style}}">
+                                                        {{style}}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group text-center mt-3">
+                                            <!-- <a class="pre float-left btn bg-light mt-3" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                            << Previous
+                                            </a> -->
+                                            <a class="btn bg-light previous" href="#carouselExampleIndicators" data-slide="prev">
+                                                Previous
+                                            </a> 
+                                            <a class="btn bg-light next" href="#carouselExampleIndicators" data-slide="next">
+                                                Next >>
+                                            </a>
+                                            <!-- <button class="btn btn-info form-control mt-3">Next</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="carousel-option">
+                                        <div class="form-group">
+                                            <label>Profile picture</label>
+                                            <div class="custom-file">
+                                                <input type="file" class="form-control" name="profile_pic" id="customFile" formControlName="profile_pic">
+                                                <div *ngIf="login.profile_pic.touched && login.profile_pic.invalid">
+                                                    <small class="text-danger" *ngIf="login.profile_pic.errors?.required">
+                                                        Profile Pic is required!
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Yoga Video</label>
+                                            <input type="file" name="video" name="yoga_video" class="form-control" formControlName="yoga_video"/>
+                                            <div *ngIf="login.yoga_video.touched && login.yoga_video.invalid">
+                                                <small class="text-danger" *ngIf="login.yoga_video.errors?.required">
+                                                    Sample Video is required!
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Cerificates if any</label>
+                                            <div class="custom-file">
+                                                <input type="file" class="form-control" name="certificate_file" id="customFile" formControlName="certificate_file">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group text-center mt-3">
+                                            <a class="btn bg-light" href="javascript:void(0);">
+                                                Upload Files
+                                            </a>
+                                        </div>
+                                        <div class="form-group custom-control custom-checkbox text-center  mt-3">
+                                            <input class="custom-control-input" type="checkbox" value="1" name="accept" id="accept" formControlName="accept">
+                                            <label class="custom-control-label" for="accept">
+                                                I accept <a href="https://www.yogifi.fit/terms-of-service/" target="_blank">Terms of service</a> and <a href="https://www.yogifi.fit/privacy-policy/" target="_blank">Privary Policy</a>
+                                            </label>
+                                            <div *ngIf="login.accept.touched && login.accept.invalid">
+                                                <small class="text-danger" *ngIf="login.accept.errors?.required">
+                                                    Accept terms and conditions
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group text-center mt-3">
+                                            <!-- <a class="pre float-left btn bg-light mt-3" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                            << Previous
+                                            </a> -->
+                                            <a class="btn bg-light previous" href="#carouselExampleIndicators" data-slide="prev">
+                                                Previous
+                                            </a> 
+                                            <!-- <a class="btn bg-light next" type="submit">
+                                                Submit
+                                            </a>  -->
+                                            <button class="btn bg-light">Submit</button>
+                                            <!-- <button class="btn btn-info form-control mt-3">Next</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

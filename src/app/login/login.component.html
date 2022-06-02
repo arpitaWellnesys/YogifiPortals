@@ -1,0 +1,117 @@
+<!-- <section>
+    <div class="container">
+        <div class="login-section">
+            <h2 class="text-center mb-5">Login</h2>
+            <form [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label>Email id</label>
+                    <input type="email" name="email" class="form-control"  formControlName="email"/>
+                    <div *ngIf="login.email.touched && login.email.invalid">
+                        <small class="text-danger" *ngIf="login.email.errors?.required">
+                            Email is required!
+                        </small>
+                        <small class="text-danger" *ngIf="login.email.errors?.email">
+                            Invalid Email Address
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" formControlName="password"/>
+                    <div *ngIf="login.password.touched && login.password.invalid">
+                        <small class="text-danger" *ngIf="login.password.errors?.required">
+                            Password is required!
+                        </small>
+                    </div>
+                </div>
+                <a [routerLink]="['/forget-password']" class="float-right mb-2" >Forget Password</a>
+                <div class="form-group">
+                    <button class="btn btn-info form-control">Login</button>
+                </div>
+        </form>
+        <p class="text-center mt-3">Not have An Account Yet!</p>   
+        <button class="btn btn-danger form-control" [routerLink]="['/register']">Register Here</button><br/><br/>
+        <button class="btn btn-outline-info col-md-12 text-center  mt-3 " (click)="loginWithGoogle()">Login with google</button><br/>
+        
+    </div>
+
+    </div>
+</section> -->
+<div class="main">
+    <div class="d-flex flex-wrap auth-wrapper">
+        <div class="auth-form col-xl-12 d-lg-flex p-0" style="background-image: url(./assets/images/bg-main.jpg);">
+        <div class="auth-info col-xl-8 col-lg-8 p-0">
+            <div class="main-card-custom card-white">
+                <div class="auth-form">
+                    <div class="logo">
+                    <img src="/assets/images/logo-yogifi.png" alt="">
+                    </div>
+                    <h2 class="form-title">Login to <span>Teach or Coach</span></h2>
+                    <form [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <div class="floating-label-content">
+                                <input class="floating-input form-control" type="text" placeholder=" " formControlName="email">
+                                <label class="floating-label">Enter Email <span>*</span></label>
+                                <div *ngIf="login.email.touched && login.email.invalid">
+                                    <small class="text-danger" *ngIf="login.email.errors?.required">
+                                        Email is required!
+                                    </small>
+                                    <small class="text-danger" *ngIf="login.email.errors?.email">
+                                        Invalid Email Address
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <div class="floating-label-content">
+                                <input class="floating-input form-control" type="password" placeholder=" " formControlName="password">
+                                <label class="floating-label">Enter Password <span>*</span></label>
+                                <div *ngIf="login.password.touched && login.password.invalid">
+                                    <small class="text-danger" *ngIf="login.password.errors?.required">
+                                        Password is required!
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a [routerLink]="['/forget-password']" class="float-right mb-2" >Forget Password</a>
+                    <div class="form-actions">
+
+                        <button class="btn btn-dark w-100">Login</button>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-center title-sign-up">
+                        <hr class="my-auto flex-grow-1">
+                        <div class="px-4">
+                            <span>Or Login / Sign Up With</span>
+                        </div>
+                        <hr class="my-auto flex-grow-1">
+                        </div>
+
+                    </form>
+
+                    <div class="social-link">
+                    <ul class="social-clients">
+                        <li><button class="btn btn-info w-100"  [routerLink]="['/register']">Register</button></li>
+                        <li><a href="javascript:void(0);" class="ic-google" (click)="loginWithGoogle()">
+                            <img src="/assets/images/icon-google.svg" alt="">
+                            Google
+                        </a></li>
+                    </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="auth-info col-xl-4 col-lg-4">
+            <div class="auth-box position-relative h-100 w-100">
+                <div class="mb-auto"></div>
+            <div class="logo-right">
+                <img src="/assets/images/logo-yogifi-2.png" alt="">
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

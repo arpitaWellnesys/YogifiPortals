@@ -1,0 +1,87 @@
+<!-- <section>
+    <div class="container">
+        <div class="login-section">
+            <h2 class="text-center mb-5">Verify OTP</h2>
+            <form  [formGroup]="otpForm"  (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label>Otp</label>
+                    <input type="text" name="otp" class="form-control" formControlName="otp"/>
+                    <div *ngIf="login.otp.touched && login.otp.invalid">
+                        <small class="text-danger" *ngIf="login.otp.errors?.required">
+                            OTP is required!
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-danger form-control">Submit</button>
+                    <p class="text-center mt-3" *ngIf="subscribeTimer > 0">Resend OTP in 00:{{subscribeTimer}} secs</p>
+                    <p class="text-center mt-3" *ngIf="subscribeTimer == 0"><a href="javascript:void(0);" (click)="resendOtp();">Resend OTP</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section> -->
+<div class="main">
+    <div class="d-flex flex-wrap auth-wrapper">
+       <div class="auth-form col-xl-12 d-lg-flex p-0" style="background-image: url(./assets/images/bg-main.jpg);">
+          <div class="auth-info col-xl-8 col-lg-8 p-0">
+             <div class="main-card-custom card-white">
+                <div class="auth-form">
+                   <div class="logo">
+                      <img src="/assets/images/logo-yogifi.png" alt="">
+                   </div>
+                   <h2 class="form-title">Verify Otp</h2>
+                   <form [formGroup]="otpForm"  (ngSubmit)="onSubmit()">
+                      <div class="row">
+                         <div class="col-md-12 form-group">
+                            <div class="floating-label-content">
+                               <input class="floating-input form-control" type="text" placeholder=" " formControlName="otp">
+                               <label class="floating-label">Enter Otp <span>*</span></label>
+                               <div *ngIf="login.otp.touched && login.otp.invalid">
+                                    <small class="text-danger" *ngIf="login.otp.errors?.required">
+                                        OTP is required!
+                                    </small>
+                                </div>
+                             </div>
+                         </div>
+                      </div>
+                      <div class="form-actions">
+                        <button class="btn btn-dark w-100">Verify</button>
+                        <p class="text-center mt-3" *ngIf="subscribeTimer > 0">Resend OTP in 00:{{subscribeTimer}} secs</p>
+                        <p class="text-center mt-3" *ngIf="subscribeTimer == 0"><a href="javascript:void(0);" (click)="resendOtp();">Resend OTP</a></p>
+                      </div>
+
+                      <div class="d-flex align-items-center justify-content-center title-sign-up">
+                         <hr class="my-auto flex-grow-1">
+                         <div class="px-4">
+                           <span>Or Login With</span>
+                         </div>
+                         <hr class="my-auto flex-grow-1">
+                       </div>
+
+                   </form>
+                   
+                   <div class="form-actions">
+                      <button class="btn btn-info w-100" [routerLink]="['/login']">Login</button>
+                   </div>
+                   <!-- <div class="social-link">
+                      <ul class="social-clients">
+                         <li><button class="btn btn-info w-100">Register</button></li>
+                         <li><button class="btn btn-info w-100">Login</button></li>
+                      </ul>
+                   </div> -->
+ 
+                </div>
+             </div>
+          </div>
+          <div class="auth-info col-xl-4 col-lg-4">
+            <div class="auth-box position-relative h-100 w-100">
+               <div class="mb-auto"></div>
+             <div class="logo-right">
+                <img src="images/logo-yogifi-2.png" alt="">
+             </div>
+            </div>
+          </div>
+       </div>
+    </div>
+ </div>

@@ -1,0 +1,63 @@
+<!-- <div class="d-flex" id="wrapper">
+    <app-sidebar></app-sidebar>
+    <div id="page-content-wrapper">
+      <app-topbar></app-topbar> -->
+<div class="main">
+  <div class="d-flex flex-wrap auth-wrapper">
+    <div class="col-xl-12 d-lg-flex p-0" >
+      <div class="dashboard-div">
+        <div class="mt-5">
+          <app-dashboard-sidebar *ngIf="dashdata.user_type == 'teacher'"></app-dashboard-sidebar>
+          <app-admin-sidebar *ngIf="dashdata.user_type == 'admin'"></app-admin-sidebar>    
+          <div class="container-fluid mt-5">
+            <!-- <div class="row"> -->
+              <!-- <div class="col-md-12"> -->
+                <!-- <div class="card-header"> -->
+                  <h3>Teacher List</h3>
+                <!-- </div> -->
+                <!-- <div class="card-body"> -->
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Mobile Number</th>
+                        <th>Email id</th>
+                        <!-- <th>Type</th> -->
+                        <th>Status</th>
+                        <th>Details</th>
+                        <!-- <th>Uploaded Content</th> -->
+                        <!-- <th>Action</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let l of list; let i=index;">
+                        <td>{{i+1}}</td>
+                        <td>{{l.first_name != "" ? l.first_name : 'NA'}}</td>
+                        <td>{{l.last_name != "" ? l.last_name : 'NA'}}</td>
+                        <td>{{l.mobile_no != "" ? l.mobile_no : 'NA'}}</td>
+                        <td>{{l.email}}</td>
+                        <!-- <td>{{l.user_type}}</td> -->
+                        <td><p *ngIf="l.acc_verify == 0.0" class="text-warning"><b>Pending</b></p><p *ngIf="l.acc_verify == 1" class="text-success"><b>Approved</b></p><p *ngIf="l.acc_verify == 2" class="text-danger"><b>Declined</b></p></td>
+                        <td><a href="javascript:void(0);" [routerLink]="['/teacher-details', l._id]" class="btn btn-dark">Details</a></td>
+                        <!-- <td><a href="javascript:void(0);" class="btn btn-info">View Uploads</a></td> -->
+                        <!-- <td>
+                          <a href="javascript:void(0);" class="btn btn-info mr-2" (click)="verifyTeacher(l._id,1)">Approve</a> 
+                          <a href="javascript:void(0);" class="btn btn-danger" (click)="verifyTeacher(l._id,2)">Decline</a> 
+                        </td> -->
+                      </tr>
+                    </tbody>
+                  </table>
+                <!-- </div> -->
+              <!-- </div> -->
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+                
+    <!-- </div>
+</div> -->

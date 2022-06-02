@@ -1,0 +1,74 @@
+
+@media screen and ( max-width: 1680px){
+  .logo { margin-bottom: 30px;}
+  .form-title{ margin-bottom: 25px; font-size: 26px;}
+  .form-actions {margin-bottom: 20px; margin-top: 15px;}
+  .title-sign-up{ margin-bottom: 25px;}
+  .logo-right { padding: 30px;}
+  .logo-right img { max-width: 180px;}
+
+  .multisteps-form__progress{ margin-bottom: 25px;}
+  .vertical-tabs-custom .nav-link{ min-height: inherit; padding: 5px 10px;}
+  .multisteps-card.mb-5{ margin-bottom: 2rem !important;}
+
+  .lower-content {border-radius: 15px; padding: 16px 90px 16px 40px;min-height: 75px;}
+  .lower-content p {font-size: 14px;line-height: 16.2px;}
+
+  .btn-dark, .btn-danger, .btn-info {
+    font-size: 16px;
+    padding: 10px 22px;
+    min-width: 150px;
+}
+
+.association-list {
+  margin-bottom: 25px;
+}
+
+}
+
+@media screen and ( max-width: 1199px){
+.card-white {padding: 30px;}
+}
+
+@media screen and ( max-width: 991px){
+.card-white {border-top-right-radius: 0; max-width: 100%;}
+.logo-right { display: none;}
+.btn-dark, .btn-danger, .btn-info{ min-width: 145px;}
+.ac-group .btn {
+  font-size: 14px;
+  min-width: 80px;
+  padding: 10px;
+  background-size: 18px;
+}
+.ac-group .btn-dark{  background-position: center right 8px;}
+.ac-group .btn-info{  background-position: center left 8px;}
+
+}
+
+@media screen and ( max-width: 767px){
+
+.box { width: 100%;}
+.modal.show .modal-dialog { width: 300px;}
+.fc-toolbar-chunk{ display: flex;}
+.pie ,#pie-age {
+  margin: 10% 0;
+  padding: 0 20%;
+}
+.line-chart, .activity-table{ overflow-x: scroll;}
+.card-white { padding: 15px 15px 30px 15px;} 
+.form-title{ font-size: 22px;}
+.social-clients li a{ font-size: 14px;}
+.social-clients li img {margin-right: 13px; width: 20px;}
+.auth-info { min-height: inherit;}
+.multisteps-form__progress {display: flex;grid-template-columns: inherit;flex-wrap: wrap;justify-content: center;}
+.multisteps-form__progress-btn:after{ display: none;}
+.multisteps-form__progress .multisteps-form__progress-btn { flex: 33.333333%; margin-bottom: 15px;max-width: 33.333333%;}
+.custom-file-uploader {padding: 8px 10px;}
+.lower-content {
+  border-radius: 10px;
+  padding: 10px 40px 10px 20px;
+  min-height: 60px;
+}
+.box-circle{ right: 15px;}
+
+}

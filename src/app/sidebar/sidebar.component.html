@@ -1,0 +1,15 @@
+<div class="bg-dark border-right" id="sidebar-wrapper">
+    <div class="text-light sidebar-heading">Teaching Portal </div>
+    <div class="list-group list-group-flush">
+        <a href="#" [routerLink]="['/dashboard']" class="list-group-item list-group-item-action bg-dark text-light">Dashboard</a>
+        <a href="#" [routerLink]="['/calendar']" class="list-group-item list-group-item-action bg-dark text-light" *ngIf="this.data.users.user_type == 'teacher'">Calendar</a>
+        <a href="#" [routerLink]="['/timesheet']" class="list-group-item list-group-item-action bg-dark text-light" *ngIf="this.data.users.user_type == 'teacher'">Timesheet</a>
+        <a href="#" [routerLink]="['/teachers-list']" class="list-group-item list-group-item-action bg-dark text-light" *ngIf="this.data.users.user_type == 'admin'">Teachers</a>
+        <a href="#" [routerLink]="['/track-user']" class="list-group-item list-group-item-action bg-dark text-light" *ngIf="this.data.users.user_type == 'teacher'">Mat Info</a>
+        <!-- <a href="#" class="list-group-item list-group-item-action bg-dark text-light">Shortcuts</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark text-light">Overview</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark text-light">Events</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark text-light">Profile</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark text-light">Status</a> -->
+    </div>
+</div>

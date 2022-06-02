@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-md-3">  
+        <div class="logo-top">
+          <a href="#"><img src="/assets/images/logo-yogifi.png" alt="" width="150"></a>
+        </div>
+    </div>
+    <div class="col-md-9 right-opt mt-3">
+      <a href="#"><img src="/assets/images/setting.png"></a>
+        <a class="dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="/assets/images/menu-bar.png" width="30px">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right mt-3" aria-labelledby="navbarDropdown">
+          <p class="dropdown-item" style="cursor: pointer;" [routerLink]="['/calendar']" >Calendar</p>    
+          <p class="dropdown-item" style="cursor: pointer;" [routerLink]="['/timesheet']" >Timesheet</p>    
+          <p class="dropdown-item" style="cursor: pointer;" [routerLink]="['/mat-data']" >Mat Data</p>
+          <p class="dropdown-item" style="cursor: pointer;" [routerLink]="['/session-duration']" >Session Duration</p>    
+          <p class="dropdown-item" style="cursor: pointer;" [routerLink]="['/best-session']" >Best Session</p>    
+          <p class="dropdown-item" style="cursor: pointer;" [routerLink]="['/teachers-list']" >Teachers</p>
+          <p class="dropdown-item" style="cursor: pointer;" [routerLink]="['/change-password']" >Password</p>
+          <p class="dropdown-item" style="cursor: pointer;" (click)="logout();">Logout</p>
+        </div>
+    </div>
+</div>

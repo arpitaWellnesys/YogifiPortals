@@ -1,0 +1,562 @@
+<div class="main">
+    <div class="d-flex flex-wrap auth-wrapper">
+       <div class="auth-form col-xl-12 d-lg-flex p-0" style="background-image: url(./assets/images/bg-main.jpg);">
+          <div class="auth-info col-xl-8 col-lg-8 p-0">
+             <div class="main-card-custom card-white">
+                <div class="auth-form">
+                   <div class="logo">
+                      <img src="/assets/images/logo-yogifi.png" alt="">
+                   </div>
+                   <h2 class="form-title">Complete<span> Your Profile</span></h2>
+                   <div class="multisteps-form">
+                       <!--progress bar-->
+                       <div class="row">
+                         <div class="col-12">
+                           <div class="multisteps-form__progress">
+                             <button class="multisteps-form__progress-btn js-active" type="button">
+                               <div class="steps-circle">
+                                 <span class="st-no"><i class="fa fa-check"></i></span>
+                               </div>
+                               <div class="circle-text">Basic Profile</div>
+                             </button>
+                             <button class="multisteps-form__progress-btn" type="button">
+                               <div class="steps-circle">
+                                <span class="st-no"><i class="fa fa-check"></i></span>
+                               </div>
+                               <div class="circle-text">Contact Info</div>
+                             </button>
+                             <button class="multisteps-form__progress-btn" type="button">
+                               <div class="steps-circle">
+                                <span class="st-no"><i class="fa fa-check"></i></span>
+                               </div>
+                               <div class="circle-text">Teaching Exp</div>
+                             </button>
+                             <button class="multisteps-form__progress-btn" type="button">
+                               <div class="steps-circle">
+                                <span class="st-no"><i class="fa fa-check"></i></span>
+                               </div>
+                               <div class="circle-text">Social Media</div>
+                             </button>
+                             <button class="multisteps-form__progress-btn" type="button">
+                               <div class="steps-circle">
+                                <span class="st-no"><i class="fa fa-check"></i></span>
+                               </div>
+                               <div class="circle-text">Training Profile</div>
+                             </button>
+               
+                             <button class="multisteps-form__progress-btn" type="button">
+                               <div class="steps-circle">
+                                <span class="st-no"><i class="fa fa-check"></i></span>
+                               </div>
+                               <div class="circle-text">Recognition</div>
+                             </button>
+               
+                             <button class="multisteps-form__progress-btn" type="button">
+                               <div class="steps-circle">
+                                <span class="st-no"><i class="fa fa-check"></i></span>
+                               </div>
+                               <div class="circle-text">Availability</div>
+                             </button>
+               
+                           </div>
+                         </div>
+                       </div>
+                       <!-- ------------ -->
+                       <form class="multisteps-form__form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                         <!--single form panel 1-->
+                         <div class="multisteps-form__panel js-active" data-animation="scaleIn">
+                           <div class="multisteps-card">
+                              <div class="row">
+                                <div class="col-md-6 form-group">
+                                  <div class="floating-label-content">
+                                    <input class="floating-input form-control" type="text" placeholder=" "  formControlName="first_name">
+                                    <label class="floating-label">First Name</label>
+                                    <div *ngIf="login.first_name.touched && login.first_name.invalid">
+                                        <small class="text-danger" *ngIf="login.first_name.errors?.required">
+                                            First name is required!
+                                        </small>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <div class="floating-label-content">
+                                  <input class="floating-input form-control" type="text" placeholder=" "   formControlName="last_name">
+                                  <label class="floating-label">Last Name</label>
+                                  <div *ngIf="login.last_name.touched && login.last_name.invalid">
+                                    <small class="text-danger" *ngIf="login.last_name.errors?.required">
+                                        Last name is required!
+                                    </small>
+                                  </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                              <div class="floating-label-content">
+                                <input class="floating-input form-control" type="text" placeholder=" "  formControlName="age">
+                                <label class="floating-label">Enter Age</label>
+                                <div *ngIf="login.age.touched && login.age.invalid">
+                                    <small class="text-danger" *ngIf="login.age.errors?.required">
+                                        Age is required!
+                                    </small>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                              <div class="floating-label-content">
+                                <select class="floating-select form-control" onclick="this.setAttribute('value', this.value);" onchange="this.setAttribute('value', this.value);" formControlName="gender">
+                                  <option value="1">Male</option>
+                                  <option value="2">Female</option>
+                                </select>
+                                <label class="floating-label">Select Gender</label>
+                                <div *ngIf="login.gender.touched && login.gender.invalid">
+                                  <small class="text-danger" *ngIf="login.gender.errors?.required">
+                                      Gender is required!
+                                  </small>
+                              </div>
+                              </div>
+                          </div>
+
+                          <div class="col-md-12 form-group">
+                            <div class="floating-label-content">
+                              <input class="floating-input form-control" type="text" placeholder=" " formControlName="primary_location">
+                              <label class="floating-label">Enter Primary Work Location</label>
+                              <div *ngIf="login.primary_location.touched && login.primary_location.invalid">
+                                  <small class="text-danger" *ngIf="login.primary_location.errors?.required">
+                                      Primary Location is required!
+                                  </small>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                           <div class="multisteps-form__content">
+                             <div class="steps-button card-info-foot">
+                               <div class="row">
+                                 <div class="col-lg-12">
+                                  <div class="ac-group text-center">
+                                    <button class="btn js-btn-next btn-danger" type="button">Skip</button>
+                                    <button class="btn js-btn-next btn-dark d-inline-flex align-items-center" type="button">Next</button>
+                                  </div>
+                                 </div>
+                               </div>                    
+                             </div>
+                           </div>
+                         </div>
+                         <!--single form panel 2-->
+                         <div class="multisteps-form__panel" data-animation="scaleIn">
+                          <div class="multisteps-card">
+                            <div class="row">
+                              <div class="col-md-6 form-group">
+                                <div class="floating-label-content">
+                                  <input class="floating-input form-control" type="text" placeholder=" "  formControlName="phone_number">
+                                  <label class="floating-label">Phone Number</label>
+                                  <div *ngIf="login.phone_number.touched && login.phone_number.invalid">
+                                    <small class="text-danger" *ngIf="login.phone_number.errors?.required">
+                                        Phone Number is required!
+                                    </small>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                              <div class="floating-label-content">
+                                <input class="floating-input form-control" type="text" placeholder=" " formControlName="email" readonly>
+                                <label class="floating-label">Email</label>
+                                <div *ngIf="login.email.touched && login.email.invalid">
+                                    <small class="text-danger" *ngIf="login.email.errors?.required">
+                                        Email is required!
+                                    </small>
+                                </div>
+                              </div>
+                          </div>
+                            </div>
+                         </div>                           
+                           <div class="multisteps-form__content">
+                             <div class="steps-button card-info-foot">
+                               <div class="row">
+                                 <div class="col-lg-12">
+                                  <div class="ac-group text-center">
+                                    <button class="btn js-btn-prev btn-info d-inline-flex align-items-center justify-content-end" type="button"> Prev </button>
+                                    <button class="btn js-btn-next btn-danger" type="button">Skip</button>
+                                    <button class="btn js-btn-next btn-dark d-inline-flex align-items-center" type="button">Next</button>
+                                  </div>
+                                 </div>
+                               </div>                    
+                             </div>
+                           </div>
+                         </div>
+                         <!--single form panel 3-->
+                         <div class="multisteps-form__panel" data-animation="scaleIn">
+                          <div class="multisteps-card mb-5">
+                            <div class="row">
+                            <div class="col-md-3">
+                              <div class="nav flex-column vertical-tabs-custom" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Teaching <br>
+                                  Hours   </a>
+                                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Educational <br>
+                                  Qualification</a>
+
+                                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Accreditation</a>
+
+                                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Yoga Style <br>
+                                  Familiarity</a>
+
+                                  <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-Specialization" role="tab" aria-controls="v-pills-settings" aria-selected="false">Specialization</a>
+
+                                  <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-test" role="tab" aria-controls="v-pills-settings" aria-selected="false">Delivery <br>
+                                    Method</a>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                              <div id="v-pills-home" class="tab-nav active">
+                                <input type="text" name="teaching_hours" class="form-control floating-input" placeholder=" " formControlName="teaching_hours"/>
+                                <label class="floating-label">Teaching Hours</label>
+                                <div *ngIf="login.teaching_hours.touched && login.teaching_hours.invalid">
+                                    <small class="text-danger" *ngIf="login.teaching_hours.errors?.required">
+                                        Teaching Hours is required!
+                                    </small>
+                                </div>
+                              </div>
+                              <div id="v-pills-profile" class="tab-nav">
+                                <input type="text" name="educational_qualification" class="form-control floating-input" placeholder=" " formControlName="education_qualification"/>
+                                <label class="floating-label">Educational Qualification</label>
+                                <div *ngIf="login.education_qualification.touched && login.education_qualification.invalid">
+                                    <small class="text-danger" *ngIf="login.education_qualification.errors?.required">
+                                        Educational Qualification is required!
+                                    </small>
+                                </div>
+                              </div>
+                              <div id="v-pills-messages" class="tab-nav">
+                                <input type="text" name="accreditation" class="form-control floating-input" formControlName="accreditation" placeholder=" "/>
+                                <label class="floating-label">Accreditation</label>
+                                <div *ngIf="login.accreditation.touched && login.accreditation.invalid">
+                                    <small class="text-danger" *ngIf="login.accreditation.errors?.required">
+                                        Accreditation is required!
+                                    </small>
+                                </div>
+                              </div>
+                              <div id="v-pills-settings" class="tab-nav">
+                                <div class="wrapper-box-card">
+                                  <div class="input-wrapper-box radio-button">
+                                    <input type="radio"  class="custom-control-input" id="Beginner" name="familarity" value="Beginner" formControlName="familarity">
+                                    <label for="Beginner" class="custom-control-label"> Beginner </label>
+                                  </div>
+                                  <div class="input-wrapper-box radio-button">
+                                    <input type="radio"  class="custom-control-input" id="Intermediate" name="familarity" value="Intermediate" formControlName="familarity">
+                                    <label for="Intermediate" class="custom-control-label"> Intermediate </label>
+                                  </div>
+                                  <div class="input-wrapper-box radio-button">
+                                    <input type="radio"  class="custom-control-input" id="Expert" name="familarity" value="Expert" formControlName="familarity">
+                                    <label for="Expert" class="custom-control-label"> Expert </label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div id="v-pills-Specialization" class="tab-nav">
+                                <input type="text" name="specialization" class="form-control floating-input" placeholder=" " formControlName="specialization"/>
+                                <label class="floating-label">Specialization</label>
+                                <div *ngIf="login.specialization.touched && login.specialization.invalid">
+                                    <small class="text-danger" *ngIf="login.specialization.errors?.required">
+                                        Specialization is required!
+                                    </small>
+                                </div>
+                              </div>
+                              <div id="v-pills-test" class="tab-nav"> 
+                                <div class="wrapper-box-card">
+                                  <div class="input-wrapper-box">
+                                    <label class="check-container"> Virtual
+                                      <input class="custom-control-input" type="checkbox" value="Virtual" id="Virtual"  formArrayName="method">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                                  <div class="input-wrapper-box">
+                                    <label class="check-container"> Personal
+                                      <input class="custom-control-input" type="checkbox" value="Personal" id="Personal"  formArrayName="method">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                                  <div class="input-wrapper-box">
+                                    <label class="check-container"> Studio
+                                      <input class="custom-control-input" type="checkbox" value="Studio" id="Studio"  formArrayName="method">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                           </div>
+
+                          </div>
+                           <div class="multisteps-form__content">
+                               <div class="steps-button card-info-foot">
+                                 <div class="row">
+                                   <div class="col-lg-12">
+                                    <div class="ac-group text-center">
+                                      <button class="btn js-btn-prev btn-info d-inline-flex align-items-center justify-content-end" type="button"> Prev </button>
+                                      <button class="btn js-btn-next btn-danger" type="button">Skip</button>
+                                      <button class="btn js-btn-next btn-dark d-inline-flex align-items-center" type="button">Next</button>
+                                    </div>
+                                   </div>
+                                 </div>                    
+                               </div>
+                             </div>
+                         </div>
+                         <!--single form panel 4-->
+                         <div class="multisteps-form__panel" data-animation="scaleIn">
+                          <div class="multisteps-card">
+                            <div class="row">
+                              <div class="col-md-6 form-group">
+                                <div class="floating-label-content">
+                                  <input class="floating-input form-control" type="text" placeholder=" " formControlName="instagram_handle">
+                                  <label class="floating-label">Instagram Handle</label>
+                                  <div *ngIf="login.instagram_handle.touched && login.instagram_handle.invalid">
+                                        <small class="text-danger" *ngIf="login.instagram_handle.errors?.required">
+                                            Instagram Handle is required!
+                                        </small>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <div class="floating-label-content">
+                                  <input class="floating-input form-control" type="text" placeholder=" " formControlName="facebook_handle">
+                                  <label class="floating-label">Facebook Handle</label>
+                                  <div *ngIf="login.facebook_handle.touched && login.facebook_handle.invalid">
+                                      <small class="text-danger" *ngIf="login.facebook_handle.errors?.required">
+                                          Facebook Handle is required!
+                                      </small>
+                                  </div>
+                                </div>
+                              </div>
+                          
+                            </div>
+                         </div>   
+                           <div class="multisteps-form__content">
+                               <div class="steps-button card-info-foot">
+                                 <div class="row">
+                                   <div class="col-lg-12">
+                                    <div class="ac-group text-center">
+                                      <button class="btn js-btn-prev btn-info d-inline-flex align-items-center justify-content-end" type="button"> Prev </button>
+                                      <button class="btn js-btn-next btn-danger" type="button">Skip</button>
+                                      <button class="btn js-btn-next btn-dark d-inline-flex align-items-center" type="button">Next</button>
+                                    </div>
+                                   </div>
+                                 </div>                    
+                               </div>
+                             </div>
+                         </div>
+                         <!--single form panel-->
+                         <div class="multisteps-form__panel" data-animation="scaleIn">
+                         <div class="multisteps-card">
+                         <div class="form-group">
+                          <div class="input-group atttach-privew">
+                            <input type="text" name="filename" class="form-control" placeholder="Upload Mugshot Profile Picture" readonly>
+                            <span class="input-group-btn">
+                              <div class="btn btn-default  custom-file-uploader">
+                                <input type="file" name="file"  (change)="handleUpload($event , 'profile_pic')"
+                                onchange="this.form.filename.value = this.files.length ? this.files[0].name : ''" formControlName="profile" />
+                                  Browse
+                              </div>
+                              <div *ngIf="login.profile.touched && login.profile.invalid">
+                                <small class="text-danger" *ngIf="login.profile.errors?.required">
+                                    Profile Photo is required!
+                                </small>
+                              </div>
+                            </span>
+                          </div>
+                         </div>
+
+                          <div class="input-group atttach-privew">
+                            <input type="text" name="videoname" class="form-control" placeholder="Upload Sample Yoga Video" readonly>
+                            <span class="input-group-btn">
+                              <div class="btn btn-default  custom-file-uploader">
+                                <input type="file" name="file" (change)="handleUpload($event , 'yoga_video')"
+                                onchange="this.form.videoname.value = this.files.length ? this.files[0].name : ''" formControlName="video" />
+                                  Browse
+                              </div>
+                              <div *ngIf="login.video.touched && login.video.invalid">
+                                <small class="text-danger" *ngIf="login.video.errors?.required">
+                                    Video is required!
+                                </small>
+                              </div>
+                            </span>
+                          </div>
+                         </div>
+                           <div class="multisteps-form__content">
+                               <div class="steps-button card-info-foot">
+                                 <div class="row">
+                                   <div class="col-lg-12">
+                                    <div class="ac-group text-center">
+                                      <button class="btn js-btn-prev btn-info d-inline-flex align-items-center justify-content-end" type="button"> Prev </button>
+                                      <button class="btn js-btn-next btn-danger" type="button">Skip</button>
+                                      <button class="btn js-btn-next btn-dark d-inline-flex align-items-center" type="button">Next</button>
+                                    </div>
+                                   </div>
+                                 </div>                    
+                               </div>
+                           </div>
+
+                         </div>
+                         <!--single form panel-->
+                         <div class="multisteps-form__panel" data-animation="scaleIn">
+                          <div class="multisteps-card">
+                            <!-- <div class="form-group">
+                              <div class="input-group atttach-privew">
+                                <span class="add-lead-text">Add Appreciation Award</span>
+                                <div class="btn btn-default  custom-file-uploader ml-auto">
+                                  Add
+                                </div>
+                              </div>
+                            </div> -->
+                            <div class="form-group">
+                             <div class="input-group atttach-privew">
+                               <input type="text" name="certificatename" class="form-control" placeholder="Upload Certificate" readonly>
+                               <span class="input-group-btn">
+                                 <div class="btn btn-default  custom-file-uploader">
+                                   <input type="file" name="file" onchange="this.form.certificatename.value = this.files.length ? this.files[0].name : ''" (change)="handleUpload($event , 'certificate_file')"
+                                    formControlName="certificate"/>
+                                     Browse
+                                 </div>
+                               </span>
+                             </div>
+                            </div>
+                            </div>
+                          <div class="multisteps-form__content">
+                              <div class="steps-button card-info-foot">
+                                <div class="row">
+                                  <div class="col-lg-12">
+                                    <div class="ac-group text-center">
+                                      <button class="btn js-btn-prev btn-info d-inline-flex align-items-center justify-content-end" type="button"> Prev </button>
+                                      <button class="btn js-btn-next btn-danger" type="button">Skip</button>
+                                      <button class="btn js-btn-next btn-dark d-inline-flex align-items-center" type="button">Next</button>
+                                    </div>
+                                  </div>
+                                </div>                    
+                              </div>
+                          </div>
+                         </div>
+                         <!--single form panel-->
+                         <div class="multisteps-form__panel" data-animation="scaleIn">
+                          <div class="multisteps-card">
+                            <div class="row" style="margin: 0 5rem;">
+                              <div class="form-group" formArrayName="timing">
+                                <label><b>Delivery Timings</b></label>
+                                <div class="row mt-3">
+                                    <div class="col-md-2">
+                                        Days
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                From:Hr
+                                            </div>
+                                            <div class="col-md-6">
+                                                From:Min
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                To:Hr
+                                            </div>
+                                            <div class="col-md-6">
+                                                To:Min
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="row mt-3"  *ngFor="let cd of getControls();let i=index;" formGroupName={{i}}>
+                                    
+                                    <div class="col-md-2 custom-control custom-checkbox">
+                                        <input class="custom-control-input" type="checkbox" value="{{days[i]}}" id="{{days[i]}}"  formControlName="day">
+                                        <label class="custom-control-label" for="{{days[i]}}">  
+                                            {{days[i]}}
+                                        </label>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <select class="custom-select" name="start_hour[]" formControlName="start_hour">
+                                                    <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                            <select class="custom-select" name="start_min[]" formControlName="start_min">
+                                                    <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <select class="custom-select" name="end_hour[]" formControlName="end_hour">
+                                                    <option *ngFor="let h of hours;" value="{{h < 10 ? '0'+h : h}}">{{h < 10 ? '0'+h : h}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                            <select class="custom-select" name="end_min[]" formControlName="end_min">
+                                                    <option *ngFor="let m of minutes" value="{{m < 10 ? '0'+m : m}}">{{m < 10 ? '0'+m : m}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- <div class="wrapper-box-card">
+                              <div class="input-wrapper-box">
+                                <label class="check-container"> Weekdays
+                                  <input type="checkbox">
+                                  <span class="checkmark"></span>
+                                </label>
+                              </div>
+                              <div class="input-wrapper-box">
+                                <label class="check-container"> Weekends
+                                  <input type="checkbox">
+                                  <span class="checkmark"></span>
+                                </label>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12 form-group">
+                                <div class="floating-label-content">
+                                  <select class="floating-select form-control" onclick="this.setAttribute('value', this.value);" onchange="this.setAttribute('value', this.value);" value="">
+                                    <option value="1">Select</option>
+                                    <option value="2">Select</option>
+                                  </select>
+                                  <label class="floating-label">Select Hours Per Week</label>
+                                </div>
+                              </div>
+                            </div> -->
+                          </div>
+                         <div class="multisteps-form__content">
+                             <div class="steps-button card-info-foot">
+                               <div class="row">
+                                 <div class="col-lg-12">
+                                  <div class="ac-group text-center">
+                                    <button class="btn js-btn-prev btn-info d-inline-flex align-items-center justify-content-end" type="button"> Prev </button>
+                                    <button class="btn js-btn-next btn-danger" type="button">Skip</button>
+                                    <button class="btn btn-dark-s d-inline-flex align-items-center" type="Submit">Submit</button>
+                                  </div>
+                                 </div>
+                               </div>                    
+                             </div>
+                         </div>
+                        </div>
+                       </form>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="auth-info col-xl-4 col-lg-4">
+            <div class="auth-box position-relative h-100 w-100">
+               <div class="mb-auto"></div>
+             <div class="logo-right">
+                <img src="/assets/images/logo-yogifi-2.png" alt="">
+             </div>
+            </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ 

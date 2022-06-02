@@ -1,0 +1,235 @@
+<!-- <div class="d-flex" id="wrapper">
+    <app-sidebar></app-sidebar>
+    <div id="page-content-wrapper">
+      <app-topbar></app-topbar>
+      <div class="container-fluid">
+        <div class="row mt-3">
+          <div class="col-md-8">
+            <h3>Program List</h3>
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              <div class="float-right col-md-5">
+                <button (click)="exportexcel()" class="btn btn-primary">Export to Excel</button>
+              </div>
+              <div class="col-md-7">
+                <select class="form-control" (change)="getProgramList();" id="interval">
+                  <option value="365">Last 1 Year</option>
+                  <option value="30">Last 30 Days</option>
+                  <option value="7">Last 7 Days</option>
+                  <option value="1">Last 1 Day</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <p>Welcome to teaching portal</p>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table" id="excel-table">
+              <thead  class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Program Name</th>
+                  <th scope="col">Users Count</th>
+                  <th scope="col">Completed Count</th>
+                  <th scope="col">Incompleted Count</th>
+                  <th scope="col">No. of Correction</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let list of programList;let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{list.program_name}}</td>
+                  <td>{{list.users_count}}</td>
+                  <td>{{list.completed_count}}</td>
+                  <td>{{list.in_completed_count}}</td>
+                  <td>{{list.no_of_correction}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="main">
+    <div class="d-flex flex-wrap auth-wrapper">
+       <div class="col-xl-12 d-lg-flex p-0" >
+          <div class="dashboard-div">
+            <div class="mt-5">
+              <app-dashboard-sidebar *ngIf="dashdata.user_type == 'teacher'"></app-dashboard-sidebar>
+              <app-admin-sidebar *ngIf="dashdata.user_type == 'admin'"></app-admin-sidebar>
+              <div class="row mt-3">
+                <div class="green-box box" [routerLink]="['/dashboard-details',0]">
+                  <p>Enrolled Students</p>
+                  <h5>{{dashboardStatics.enrolled_student}}</h5>
+                </div>
+                <div class="blue-box box" [routerLink]="['/dashboard-details',1]">
+                  <p>Active Students</p>
+                  <h5>{{dashboardStatics.active_student}}</h5>
+                </div>
+                <div class="purple-box box"  [routerLink]="['/dashboard-details',2]">
+                  <p>Mats in use</p>
+                  <h5>{{dashboardStatics.mat_in_use}}</h5>
+                </div>
+                <div class="orange-box box"  [routerLink]="['/dashboard-details',3]">
+                  <p>Total Sessions</p>
+                  <h5>{{dashboardStatics.total_sessions}}</h5>
+                </div>
+                <div class="red-box box">
+                  <p>Yogifi Minutes</p>
+                  <h5>{{dashboardStatics.yogifi_minutes}}</h5>
+                </div>
+                <div class="gray-box box">
+                  <p>Total Score</p>
+                  <h5>{{numFormatter(dashboardStatics.total_score)}}</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 mt-3">
+                  <div class="row">
+                    <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 mid-sec-btn">
+                      <a href="javascript:void(0);" class="btn btn-default btn-active" data-id="program">By Program</a>
+                      <a href="javascript:void(0);" class="btn btn-default" data-id="activity">By Activity</a>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12" id="program">
+                      <div class="line-chart mt-3" style="max-height: 350px;" >
+                          <!-- <button class="btn btn-default btn-line" id="data1">DAILY</button> -->
+                          <button class="btn btn-default btn-line" id="line-week">WEEKLY</button>
+                          <button class="btn btn-default btn-line line-active" id="line-month">MONTHLY</button>
+                          <canvas id="weekly-chart" style="width:100%; max-height: 280px;" style="display: none;"></canvas>
+                          <canvas id="line-chart" style="width:100%;max-height: 300px;"></canvas>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12" id="activity" style="display: none;">
+                      <div class="activity-table mt-3">
+                        <div class="row">
+                          <div class="col-md-6"></div>
+                          <div class="col-md-6">
+                            <div class="row">
+                              <div class="float-right col-md-5 mt-3">
+                                <button (click)="exportexcel()" class="btn btn-primary">Export to Excel</button>
+                              </div>
+                              <div class="col-md-7 mt-3">
+                                <select class="form-control" (change)="getProgramList();" id="interval">
+                                  <option value="365">Last 1 Year</option>
+                                  <option value="30">Last 30 Days</option>
+                                  <option value="7">Last 7 Days</option>
+                                  <option value="1">Last 1 Day</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <table class="table mt-3" id="excel-table">
+                          <thead >
+                            <tr>
+                              <!-- <th scope="col">#</th> -->
+                              <th scope="col">Program Name</th>
+                              <th scope="col">Users Count</th>
+                              <th scope="col">Completed Count</th>
+                              <th scope="col">Incompleted Count</th>
+                              <th scope="col">No. of Correction</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let list of programList |   paginate:
+                            {itemsPerPage:3,
+                              currentPage:page,
+                              totalItems:totalLength }">
+                              <!-- <td>{{i+1}}</td> -->
+                              <td>{{list.program_name}}</td>
+                              <td>{{list.users_count}}</td>
+                              <td>{{list.completed_count}}</td>
+                              <td>{{list.in_completed_count}}</td>
+                              <td>{{list.no_of_correction}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <pagination-controls class="text-right" (pageChange)="page = $event"></pagination-controls>
+                      </div>
+                    </div>  
+                  </div>
+                </div>
+                <div class="col-md-4 mt-3">
+                  <a href="javascript:void(0);" class="btn btn-default">By Demographics</a>
+                  <div class="pie-chart mt-3">
+                    <div class="pie-btn mt-3">
+                      <!-- <a href="javascript:void(0);" class="btn btn-chart" data-id="pie-geography">Geography</a> -->
+                      <a href="javascript:void(0);" class="btn btn-chart" data-id="pie-age">Age Range</a>
+                      <a href="javascript:void(0);" class="btn btn-chart chart-active" data-id="pie-gender">Gender</a>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12" id="pie-geography" style="display: none;">
+                        <canvas id="pieChart-geography" style="max-width: 500px;"></canvas>
+                      </div>
+                      <div class="col-md-9 text-center col-sm-8" id="pie-age" style="margin: 0 auto;display: none;">
+                        <canvas id="pieChart-age" style="max-width: 350px;"></canvas>
+                      </div>
+                    
+                      <div class="col-md-6 col-sm-6 pie" id="pie-gender-1">
+                          <canvas id="pieChart-male" style="max-width: 500px;"></canvas>
+                      </div>
+                      <div class="col-md-6 col-sm-6 pie" id="pie-gender"> 
+                            <canvas id="pieChart-female" style="max-width: 500px;"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3 mb-3">
+                <div class="col-md-8">
+                  <h5>Leaderboard</h5>
+                </div>
+              </div>
+
+              <div class="row mt-3 mb-3">
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                  <input type="text" id="search" placeholder="Search for Student id , Mat Id Or Name" class="floating-input float-msg form-control" (change)="searchRecord()" style="height: 50px; padding : 20px;"/>
+                </div>
+                <table class="table mt-3">
+                  <thead class="text-center ">
+                    <tr>
+                      <th>Name</th>
+                      <th>Student Id</th>
+                      <th>Badges Earned</th>
+                      <th>Sessions</th>
+                      <th>Yogifi Minutes</th>
+                      <th>Continues Streak</th>
+                      <th>Score</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                    <tr *ngFor="let leader of leaderBoard;let i=index;">
+                      <td >{{leader.name}}</td>
+                      <td>{{leader._id}}</td>
+                      <td >{{leader.badge_count}}</td>
+                      <td >{{leader.sessions}}</td>
+                      <td >{{leader.yogifi_minutes}}</td>
+                      <td >{{leader.overall_streak}}</td>
+                      <td >{{leader.profile_yogifi_score}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <nav aria-label="Page navigation example mb-3" *ngIf="leaderBoard.length > 0" style="width: -webkit-fill-available;">
+                  <ul class="pagination flex-wrap">
+                    <li [ngClass]="{'page-item disabled' : currentPage == 1}" >
+                      <a class="page-link" href="javascript:void(0);" tabindex="-1" (click)="getpaginateddata(currentPage-1)">Previous</a>
+                    </li>
+                    <li class="page-item"  *ngFor="let item of [].constructor(this.totalPages); let i = index" [ngClass]="{'active' : currentPage == i+1 }">
+                      <a class="page-link" href="javascript:void(0);" (click)="getpaginateddata(i+1)">{{i+1}}</a>
+                    </li>
+                    <li class="page-item"  [ngClass]="{'disabled' : currentPage == this.totalPages}" >
+                      <a class="page-link" href="javascript:void(0);" (click)="getpaginateddata(currentPage+1)">Next</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+       </div>
+    </div>
+ </div>
